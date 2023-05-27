@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: app-ns
+  name: deployment-2049
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-2049
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-2049
+    spec:
+      containers:
+      - image: mahaelkomey/test-app-web-site
+        imagePullPolicy: Always
+        name: app-2049
+        ports:
+        - containerPort: 80
