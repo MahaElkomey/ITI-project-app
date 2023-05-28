@@ -14,7 +14,7 @@ spec:
         app.kubernetes.io/name: app-2049
     spec:
       containers:
-      - image: mahaelkomey/test-app-web-site
+      - image: mahaelkomey/test-app
         imagePullPolicy: Always
         name: app-2049
         ports:
