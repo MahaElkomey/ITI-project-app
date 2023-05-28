@@ -2,12 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: app-ns
-  name: service-2049
+  name: app-loadbalancer
 spec:
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  type: NodePort
   selector:
     app.kubernetes.io/name: app-2049
+  ports:
+    - name: app-lb-port
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
