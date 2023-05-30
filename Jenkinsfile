@@ -21,7 +21,7 @@ pipeline {
                  withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable: 'mypass', usernameVariable: 'myuser')]) {
                        sh"""
                         docker login -u ${myuser} -p ${mypass}
-                        kubectl delete deployment --all -n jenkins-ns
+                        kubectl delete deployment --all -n app-ns
                         kubectl apply -f app-namespace.yaml
                         kubectl apply -f app-deploy.yaml
                         kubectl apply -f app-service.yaml
