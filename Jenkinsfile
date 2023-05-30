@@ -2,7 +2,8 @@ pipeline {
     agent {
         label 'aws-slave'
     }
-    
+
+    stages {
         stage('build and push image to docker hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable: 'mypass', usernameVariable: 'myuser')]) {
@@ -14,8 +15,7 @@ pipeline {
                 }
             }
         }
-
-    stages {
+        
         stage('deploy the app') {
             steps {
                  withCredentials([usernamePassword(credentialsId: "dockerHub", passwordVariable: 'mypass', usernameVariable: 'myuser')]) {
